@@ -1,21 +1,18 @@
 <?php
-$host     = "shortline.proxy.rlwy.net";  // HOST dari Railway
-$port     = 16491;                        // PORT dari Railway
-$database = "a264133_cma24meo";                   // NAMA DATABASE
-$username = "root";                      // USERNAME
-$password = "BzqBvkxgNYrBiaaQClzRvJvsRPXfKvyz";         // PASSWORD dari Railway
+$host     = "shortline.proxy.rlwy.net";
+$port     = 16491;
+$database = "a264133_cma24meo"; // <== pakai ini!
+$username = "root";
+$password = "PASSWORD_RAILWAY_KAMU";
 
-// --- MYSQLI ---
 $conn = mysqli_connect($host, $username, $password, $database, $port);
 if (!$conn) {
-    die("Koneksi MySQLi Gagal: " . mysqli_connect_error());
+    die("Koneksi Gagal: " . mysqli_connect_error());
 }
 
-// --- PDO ---
 try {
     $pdo = new PDO("mysql:host=$host;port=$port;dbname=$database", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // echo "Koneksi PDO berhasil";
 } catch (PDOException $e) {
     die("Koneksi PDO gagal: " . $e->getMessage());
 }
