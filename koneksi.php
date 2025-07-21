@@ -17,7 +17,7 @@ if (!$conn) {
 }
 
 try {
-    $pdo = new PDO("mysql:host=localhost;dbname=apkkelasvirtual", "root", "");
+    $pdo = new PDO("mysql:host=mysql.railway.internal;dbname=railway", "root", "BzqBvkxgNYrBiaaQClzRvJvsRPXfKvyz");
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die("Koneksi gagal: " . $e->getMessage());
