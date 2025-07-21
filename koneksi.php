@@ -1,7 +1,7 @@
 <?php
 $host     = "shortline.proxy.rlwy.net";
 $port     = 16491;
-$database = "a264133_cma24meo"; // <== pakai ini!
+$database = ""; // <== pakai ini!
 $username = "root";
 $password = "BzqBvkxgNYrBiaaQClzRvJvsRPXfKvyz";
 
