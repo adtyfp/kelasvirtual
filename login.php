@@ -12,10 +12,11 @@ if (isset($_SESSION['user_id'])) {
     exit();
 }
 
-// Handle form POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $action = $_POST['action'] ?? '';
+
     // === LOGIN ===
-    if ($_POST['action'] === 'login') {
+    if ($action === 'login') {
         $email_nim = trim($_POST['email_nim']);
         $password = $_POST['password'];
 
@@ -24,13 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user = $stmt->fetch();
 
         if ($user && password_verify($password, $user['password'])) {
-            // Simpan ke session
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_name'] = $user['name'];
 
-            // Simpan ke cookie (24 jam)
-            setcookie('user_id', $user['id'], time() + (86400), "/");
-            setcookie('user_name', $user['name'], time() + (86400), "/");
+            setcookie('user_id', $user['id'], time() + 86400, "/");
+            setcookie('user_name', $user['name'], time() + 86400, "/");
 
             header('Location: index.php');
             exit();
@@ -41,34 +40,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // === REGISTER ===
-    if ($_POST['action'] === 'register') {
+    if ($action === 'register') {
         $name = trim($_POST['name']);
         $email = trim($_POST['email']);
         $nim = trim($_POST['nim']);
         $password = $_POST['password'];
         $confirm_password = $_POST['confirm_password'];
-        $note = ''; // Nilai default untuk kolom note
+        $note = ''; // Kosongkan jika tidak diperlukan
 
         // Validasi
-        if (empty($name))
-            $errors['name'] = "Nama wajib diisi";
-        if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL))
-            $errors['email'] = "Email tidak valid";
-        if (empty($nim))
-            $errors['nim'] = "NIM wajib diisi";
-        if (strlen($password) < 8)
-            $errors['password'] = "Password minimal 8 karakter";
-        if ($password !== $confirm_password)
-            $errors['confirm_password'] = "Konfirmasi password tidak cocok";
+        if (!$name) $errors['name'] = "Nama wajib diisi";
+        if (!$email || !filter_var($email, FILTER_VALIDATE_EMAIL)) $errors['email'] = "Email tidak valid";
+        if (!$nim) $errors['nim'] = "NIM wajib diisi";
+        if (strlen($password) < 8) $errors['password'] = "Password minimal 8 karakter";
+        if ($password !== $confirm_password) $errors['confirm_password'] = "Konfirmasi password tidak cocok";
 
         // Cek duplikat
         $check = $pdo->prepare("SELECT COUNT(*) FROM users WHERE email = ? OR nim = ?");
         $check->execute([$email, $nim]);
         if ($check->fetchColumn() > 0) {
-            $errors['email'] = "Email atau NIM sudah terdaftar";
+            $errors['register'] = "Email atau NIM sudah terdaftar";
         }
 
-        // Simpan jika lolos validasi
+        // Simpan jika tidak ada error
         if (empty($errors)) {
             try {
                 $hash = password_hash($password, PASSWORD_DEFAULT);
@@ -87,7 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="id">
