@@ -3,7 +3,7 @@ $host     = "shortline.proxy.rlwy.net";  // HOST dari Railway
 $port     = 16491;                        // PORT dari Railway
 $database = "railway";                   // NAMA DATABASE
 $username = "root";                      // USERNAME
-$password = "ISI_PASSWORD_KAMU";         // PASSWORD dari Railway
+$password = "BzqBvkxgNYrBiaaQClzRvJvsRPXfKvyz";         // PASSWORD dari Railway
 
 // --- MYSQLI ---
 $conn = mysqli_connect($host, $username, $password, $database, $port);
