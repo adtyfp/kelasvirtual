@@ -3,7 +3,7 @@ $host     = "shortline.proxy.rlwy.net";
 $port     = 16491;
 $database = "a264133_cma24meo"; // <== pakai ini!
 $username = "root";
-$password = "PASSWORD_RAILWAY_KAMU";
+$password = "BzqBvkxgNYrBiaaQClzRvJvsRPXfKvyz";
 
 $conn = mysqli_connect($host, $username, $password, $database, $port);
 if (!$conn) {
