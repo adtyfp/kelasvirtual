@@ -157,7 +157,7 @@ $user_id = $_SESSION['user_id']; // ✅ Tambahkan baris ini
 <main class="content" id="tugas">
 
 <?php
-$conn = new mysqli("localhost", "root", "", "apkkelasvirtual");
+$conn = new mysqli("shortline.proxy.rlwy.net", "root", "BzqBvkxgNYrBiaaQClzRvJvsRPXfKvyz", "railway", 16491);
 if ($conn->connect_error) {
   die("Koneksi gagal: " . $conn->connect_error);
 }
