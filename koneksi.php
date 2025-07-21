@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost";
-$database = "apkkelasvirtual";
+$servername = "mysql.railway.internal";
+$database = "railway";
 $username = "root";
-$password = "";
+$password = "BzqBvkxgNYrBiaaQClzRvJvsRPXfKvyz";
 
 // Membuat koneksi
 $conn = mysqli_connect($servername, $username, $password, $database);
