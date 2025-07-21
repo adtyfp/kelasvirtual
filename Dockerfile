@@ -1,12 +1,13 @@
 FROM php:8.1-apache
 
-# Salin semua file ke dalam container
-COPY . /var/www/html/
+# Install ekstensi mysqli dan lainnya
+RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-# Aktifkan modul rewrite (jika pakai htaccess)
+# Aktifkan modul Apache rewrite (jika pakai .htaccess)
 RUN a2enmod rewrite
 
-# Set hak akses
-RUN chown -R www-data:www-data /var/www/html
+# Salin seluruh project ke dalam container
+COPY . /var/www/html/
 
-EXPOSE 80
+# Set hak akses ke folder proyek
+RUN chown -R www-data:www-data /var/www/html
