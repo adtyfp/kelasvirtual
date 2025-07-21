@@ -1,7 +1,7 @@
 <?php
 $host     = "shortline.proxy.rlwy.net";  // HOST dari Railway
 $port     = 16491;                        // PORT dari Railway
-$database = "railway";                   // NAMA DATABASE
+$database = "a264133_cma24meo";                   // NAMA DATABASE
 $username = "root";                      // USERNAME
 $password = "BzqBvkxgNYrBiaaQClzRvJvsRPXfKvyz";         // PASSWORD dari Railway
 
