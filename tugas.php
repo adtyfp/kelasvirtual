@@ -8,10 +8,14 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 // koneksi
-$koneksi = new mysqli("shortline.proxy.rlwy.net", "root", "BzqBvkxgNYrBiaaQClzRvJvsRPXfKvyz", "railway");
+$host = 'shortline.proxy.rlwy.net';
+$port = 16491; // <- ini penting!
+$user = 'root';
+$password = 'BzqBvkxgNYrBiaaQClzRvJvsRPXfKvyz';
+$database = 'railway';
 
-$tugas = [];
-$kuis = [];
+$koneksi = new mysqli($host, $user, $password, $database, $port);
+
 
 // Ambil hanya tugas dari sistem (bukan hasil upload user)
 $tugasResult = $koneksi->query("SELECT * FROM tugashome WHERE is_uploaded = 0 ORDER BY deadline ASC");
