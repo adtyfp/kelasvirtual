@@ -12,7 +12,7 @@
 
   <!-- Header -->
   <header class="header">
-         <a href="bantuan.php"><i class="fas fa-arrow-left" style="color: white;"></i></a>
+         <a href="bantuan.php" ><i class="fas fa-arrow-left" style="color: white;"></i></a>
     <h1>Ajukan Komplain</h1>
   </header>
 
