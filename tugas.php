@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 // koneksi
-$koneksi = new mysqli("localhost", "root", "", "apkkelasvirtual");
+$koneksi = new mysqli("shortline.proxy.rlwy.net", "root", "", "railway");
 
 $tugas = [];
 $kuis = [];
