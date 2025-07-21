@@ -238,24 +238,24 @@ function waktuLalu($tanggal)
 <div class="dropdown-container">
   <label for="dropdown-prodi" class="dropdown-label">Pilih Program Studi</label>
   <select id="dropdown-prodi" class="dropdown">
-    <option value="Prodi Teknik Informatika">Prodi Teknik Informatika</option>
-    <option value="Prodi Sistem Informasi">Prodi Sistem Informasi</option>
-    <option value="Prodi Sistem Komputer">Prodi Sistem Komputer</option>
-    <option value="Prodi Teknik Industri">Prodi Teknik Industri</option>
-    <option value="Prodi Teknik Elektro">Prodi Teknik Elektro</option>
-    <option value="Prodi Teknik Arsitektur">Prodi Teknik Arsitektur</option>
-    <option value="Prodi Teknik Sipil">Prodi Teknik Sipil</option>
+    <option value="Prodi Teknik Informatika">Teknik Informatika</option>
+    <option value="Prodi Sistem Informasi">Sistem Informasi</option>
+    <option value="Prodi Sistem Komputer">Sistem Komputer</option>
+    <option value="Prodi Teknik Industri">Teknik Industri</option>
+    <option value="Prodi Teknik Elektro">Teknik Elektro</option>
+    <option value="Prodi Teknik Arsitektur">Teknik Arsitektur</option>
+    <option value="Prodi Teknik Sipil">Teknik Sipil</option>
     <option value="Perencanaan Wilayah dan Kota">Perencanaan Wilayah dan Kota</option>
-    <option value="Prodi Teknik Robotika dan Kecerdasan Buatan">Prodi Teknik Robotika dan Kecerdasan Buatan</option>
-    <option value="Prodi Manajemen Informatika">Prodi Manajemen Informatika</option>
+    <option value="Prodi Teknik Robotika dan Kecerdasan Buatan">Teknik Robotika dan Kecerdasan Buatan</option>
+    <option value="Prodi Manajemen Informatika"> Manajemen Informatika</option>
     <option value="Komputerisasi Akuntansi">Komputerisasi Akuntansi</option>
     <option value="Keuangan dan Perbankan">Keuangan dan Perbankan</option>
     <option value="Manajemen Pemasaran">Manajemen Pemasaran</option>
     <option value="Desain Grafis">Desain Grafis</option>
-    <option value="Prodi Akuntansi">Prodi Akuntansi</option>
-    <option value="Prodi Manajemen">Prodi Manajemen</option>
-    <option value="Prodi Hukum">Prodi Hukum</option>
-    <option value="Prodi Ilmu Pemerintahan">Prodi Ilmu Pemerintahan</option>
+    <option value="Prodi Akuntansi"> Akuntansi</option>
+    <option value="Prodi Manajemen"> Manajemen</option>
+    <option value="Prodi Hukum"> Hukum</option>
+    <option value="Prodi Ilmu Pemerintahan"> Ilmu Pemerintahan</option>
     <option value="Ilmu Komunikasi">Ilmu Komunikasi</option>
     <option value="Hubungan Internasional">Hubungan Internasional</option>
     <option value="Desain Komunikasi Visual">Desain Komunikasi Visual</option>
