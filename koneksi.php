@@ -1,7 +1,7 @@
 <?php
-$host     = "shortline.proxy.rlwy.net";
+$host     = "mysql.railway.internal";
 $port     = 16491;
-$database = ""; // <== pakai ini!
+$database = "a264133_cma24meo"; // <== pakai ini!
 $username = "root";
 $password = "BzqBvkxgNYrBiaaQClzRvJvsRPXfKvyz";
 
