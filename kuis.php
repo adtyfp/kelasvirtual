@@ -1018,10 +1018,10 @@
         header('Content-Type: application/json');
 
         // Database configuration
-        $db_host = 'localhost';
-        $db_user = 'root'; // Ganti dengan user MySQL Anda
-        $db_pass = '';     // Ganti dengan password MySQL Anda
-        $db_name = 'apkkelasvirtual';
+$db_host = "mysql.railway.internal";
+$db_name = "railway";
+$db_name = "root";
+$password = "BzqBvkxgNYrBiaaQClzRvJvsRPXfKvyz";
 
         // Create connection
         $conn = new mysqli($db_host, $db_user, $db_pass, $db_name);
