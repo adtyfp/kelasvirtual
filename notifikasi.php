@@ -21,7 +21,7 @@ $notifikasiList = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notifikasi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
+      <style>
         * {
             margin: 0; padding: 0; box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
@@ -31,7 +31,7 @@ $notifikasiList = $stmt->fetchAll(PDO::FETCH_ASSOC);
             color: #333;
         }
         .header {
-            background-color: #9C27B0;
+            background-color: #3d7bff;
             color: white;
             padding: 15px 20px;
             display: flex;
