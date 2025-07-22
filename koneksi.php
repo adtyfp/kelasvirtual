@@ -4,7 +4,7 @@ $db = 'railway';
 $user = 'root';
 $pass = 'BzqBvkxgNYrBiaaQClzRvJvsRPXfKvyz';
 $charset = 'utf8mb4';
-$port = 3306;
+$port = 16491;
 
 // Opsi tambahan untuk koneksi
 $options = [
