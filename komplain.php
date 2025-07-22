@@ -178,7 +178,7 @@
 
     <!-- Header Content -->
     <div class="header-top">
-      <a href="index.php"><i class="fas fa-arrow-left"></i></a>
+      <a href="bantuan.php"><i class="fas fa-arrow-left"></i></a>
       <h1>Ajukan Komplain</h1>
     </div>
     <p class="subheader">Ada Yang Bisa Kami Bantu?</p>
