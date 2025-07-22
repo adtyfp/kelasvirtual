@@ -22,7 +22,7 @@ if (isset($_SESSION['user_id'])) {
 </div>
 
         <!-- Lingkaran Gradien -->
-         <div class="gradient-circle"></div>>
+         <div class="gradient-circle"></div>
 
         <!-- Ilustrasi -->
         <div class="illustration">
