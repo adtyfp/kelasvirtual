@@ -22,7 +22,7 @@
         }
 
         .header {
-            background-color: #9C27B0;
+            background-color: #3d7bff;
             color: white;
             padding: 15px 20px;
             display: flex;
@@ -138,7 +138,7 @@
 
         .buy-button {
             padding: 10px 50px;
-            background-color: #9C27B0;
+            background-color: #3d7bff;
             color: white;
             border: none;
             border-radius: 50px;
@@ -150,7 +150,7 @@
         }
 
         .buy-button:hover {
-            background-color: #7B1FA2;
+            background-color:rgb(29, 71, 161);
         }
     </style>
 </head>
