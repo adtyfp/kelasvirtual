@@ -7,7 +7,7 @@
     <title>Kelas Individu</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
+       <style>
         * {
             margin: 0;
             padding: 0;
@@ -28,7 +28,7 @@
         }
 
         .header {
-            background-color: #9C27B0;
+            background-color: #3d7bff;
             color: white;
             padding: 16px;
             display: flex;
@@ -119,7 +119,7 @@
             display: block;
             width: 100%;
             padding: 12px;
-            background-color: #9C27B0;
+            background-color: #3d7bff;
             color: white;
             border: none;
             border-radius: 50px;
@@ -132,7 +132,7 @@
         }
 
         .select-btn:hover {
-            background-color: #7B1FA2;
+            background-color:rgb(39, 79, 164);
         }
 
         .divider {
