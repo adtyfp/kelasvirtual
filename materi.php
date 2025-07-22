@@ -100,7 +100,7 @@ if (isset($_GET['download'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
+       <style>
         * {
             margin: 0;
             padding: 0;
@@ -114,7 +114,7 @@ if (isset($_GET['download'])) {
         }
 
         header {
-            background: #9C27B0;
+            background: #3d7bff;
             color: white;
             padding: 16px 20px;
             display: flex;
@@ -142,7 +142,7 @@ if (isset($_GET['download'])) {
 
         .material-badge {
             font-size: 12px;
-            background: #9C27B0;
+            background:rgb(147, 176, 239);
             color: white;
             padding: 4px 8px;
             border-radius: 50px;
@@ -183,8 +183,8 @@ if (isset($_GET['download'])) {
             width: 100%;
             padding: 10px;
             background: transparent;
-            border: 1.5px solid #9C27B0;
-            color: #9C27B0;
+            border: 1.5px solid #3d7bff;
+            color: #3d7bff;
             border-radius: 30px;
             font-size: 14px;
             text-align: center;
@@ -193,7 +193,7 @@ if (isset($_GET['download'])) {
         }
 
         .download-btn:hover {
-            background: #9C27B0;
+            background: #3d7bff;
             color: white;
         }
 
@@ -202,7 +202,7 @@ if (isset($_GET['download'])) {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #9C27B0;
+            background: #3d7bff;
             color: white;
             font-size: 24px;
             width: 50px;
@@ -238,7 +238,7 @@ if (isset($_GET['download'])) {
         }
 
         .form-popup button {
-            background: #9C27B0;
+            background: #3d7bff;
             color: white;
             border: none;
             font-weight: 600;
