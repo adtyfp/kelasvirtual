@@ -36,7 +36,7 @@ while ($row = $kuisResult->fetch_assoc()) {
     <title>Tugas - Edukasi Mobile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
+        <style>
         * {
             margin: 0;
             padding: 0;
@@ -50,7 +50,7 @@ while ($row = $kuisResult->fetch_assoc()) {
         }
 
         .header {
-            background-color: #9c27b0;
+            background-color: #3d7bff   ;
             color: white;
             padding: 15px 20px;
             display: flex;
@@ -95,7 +95,7 @@ while ($row = $kuisResult->fetch_assoc()) {
         }
 
         .tab.active {
-            color: #9c27b0;
+            color: #f39c12;
         }
 
         .tab-indicator {
@@ -104,7 +104,7 @@ while ($row = $kuisResult->fetch_assoc()) {
             left: 0;
             height: 3px;
             width: 50%;
-            background-color: #9c27b0;
+            background-color: #f39c12;
             border-radius: 3px 3px 0 0;
             transition: all 0.3s ease;
         }
@@ -163,7 +163,7 @@ while ($row = $kuisResult->fetch_assoc()) {
 
         .progress {
             height: 100%;
-            background-color: #9c27b0;
+            background-color:rgb(39, 176, 48);
             width: 45%;
             border-radius: 3px;
             transition: width 0.3s ease;
@@ -181,7 +181,7 @@ while ($row = $kuisResult->fetch_assoc()) {
         .submit-btn {
             display: inline-block;
             padding: 6px 12px;
-            background-color: #9c27b0;
+            background-color: #f39c12 ;
             color: white;
             border-radius: 4px;
             font-size: 12px;
@@ -192,7 +192,7 @@ while ($row = $kuisResult->fetch_assoc()) {
         }
 
         .submit-btn:hover {
-            background-color: #8e24aa;
+            background-color:rgb(249, 183, 76);
             transform: scale(1.05);
         }
 
@@ -206,7 +206,7 @@ while ($row = $kuisResult->fetch_assoc()) {
 
         .due-date i {
             margin-right: 5px;
-            color: #9c27b0;
+            color:rgb(0, 0, 0);
         }
 
         .quiz-card {
@@ -252,59 +252,108 @@ while ($row = $kuisResult->fetch_assoc()) {
 
         .quiz-duration i {
             margin-right: 5px;
-            color: #9c27b0;
+            color:rgb(0, 0, 0);
         }
 
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: #F2F2F2;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            padding: 10px 0;
-            border-top: 1px solid #e0e0e0;
-            z-index: 1000;
-        }
+      
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 55px; /* Dikurangi dari 70px */
+  background:  linear-gradient( #73a5f0 0%, #124fd3 100%);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  padding: 0 15px; /* Tambah padding samping */
+}
 
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 10px;
-            color: #777;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+.bottom-nav .nav-item {
+  flex: 0 1 auto; /* Ubah dari flex: 1 agar tidak mengambil ruang penuh */
+  text-align: center;
+  color: white;
+  font-size: 11px; /* Dikurangi dari 12px */
+  text-decoration: none;
+  position: relative;
+  padding-top: 3px; /* Dikurangi dari 5px */
+  min-width: 50px; /* Dikurangi dari 60px */
+}
 
-        .nav-item i {
-            font-size: 20px;
-            margin-bottom: 3px;
-        }
+/* Atur jarak khusus untuk ikon yang berada di samping logo */
+.bottom-nav .nav-item:nth-child(2) { /* Tugas (sebelum logo) */
+  margin-right: 35px; /* Dikurangi dari 40px */
+}
 
-        .nav-item.active {
-            color: #7D2AE8;
-            font-weight: bold;
-        }
+.bottom-nav .nav-item:nth-child(4) { /* Pesan (setelah logo) */
+  margin-left: 35px; /* Dikurangi dari 40px */
+}
 
-        .nav-logo-wrapper {
-            position: relative;
-            top: -20px;
-            z-index: 10;
-        }
+.bottom-nav .nav-item i {
+  font-size: 16px; /* Dikurangi dari 18px */
+  display: block;
+  margin-bottom: 2px;
+}
 
-        .nav-logo img {
-            height: 40px;
-            width: auto;
-            display: block;
-            transition: transform 0.3s ease;
-        }
+/* Active link */
+.bottom-nav .nav-item.active,
+.bottom-nav .nav-item.active i {
+  color: #ffc400;
+  font-weight: semibold;
+}
 
-        .nav-logo img:hover {
-            transform: scale(1.05);
-        }
+/* Logo tengah */
+.nav-logo-wrapper {
+  position: absolute;
+  top: -25px; /* Disesuaikan dari -30px */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2196F3;
+  width: 55px; /* Dikurangi dari 65px */
+  height: 55px; /* Dikurangi dari 65px */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1001; /* Pastikan logo di atas ikon */
+}
+
+.nav-logo-wrapper .nav-logo {
+  display: block;
+  width: 50px; /* Dikurangi dari 60px */
+  height: 50px; /* Dikurangi dari 60px */
+  background: white;
+  border-radius: 50%;
+  padding: 8px; /* Dikurangi dari 10px */
+  overflow: hidden;
+}
+
+.nav-logo-wrapper .nav-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Alternative: Jika ingin menggunakan CSS Grid untuk kontrol yang lebih presisi */
+/*
+.bottom-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr 80px 1fr 1fr;
+  gap: 10px;
+  padding: 0 20px;
+}
+
+.nav-logo-wrapper {
+  grid-column: 3;
+  position: relative;
+  top: -30px;
+}
+*/
 
         /* Slide Animations */
         .slide-in-left {
