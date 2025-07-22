@@ -35,7 +35,7 @@ $id_transaksi = $data['id_transaksi'] ?? '-';
 
         body {
             background-color: #F3E5F5;
-            color: #4A148C;
+            color:rgb(2, 40, 121);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -72,7 +72,7 @@ $id_transaksi = $data['id_transaksi'] ?? '-';
         }
 
         .btn {
-            background-color: #9C27B0;
+            background-color: #3d7bff;
             color: white;
             text-decoration: none;
             padding: 12px;
@@ -84,13 +84,13 @@ $id_transaksi = $data['id_transaksi'] ?? '-';
         }
 
         .btn:hover {
-            background-color: #7B1FA2;
+            background-color:rgb(25, 64, 148);
         }
 
         .btn.secondary {
             background-color: transparent;
-            color: #9C27B0;
-            border: 2px solid #9C27B0;
+            color: #3d7bff;
+            border: 2px solid #3d7bff;
         }
 
         .btn.secondary:hover {
