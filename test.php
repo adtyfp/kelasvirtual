@@ -7,7 +7,7 @@ try {
 
     // Contoh data dummy
     $stmt->execute([
-        'nama'     => 'Tes User',
+        'name'     => 'Tes User',
         'email'    => 'tes@email.com',
         'password' => password_hash('12345', PASSWORD_BCRYPT)
     ]);
