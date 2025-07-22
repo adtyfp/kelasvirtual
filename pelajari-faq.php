@@ -7,7 +7,7 @@
     <title>Pelajari FAQ - Fullscreen</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
+       <style>
         * {
             margin: 0;
             padding: 0;
@@ -35,7 +35,7 @@
 
         .header {
             position: relative;
-            background: linear-gradient(to bottom right, #C065D9, #B530C1);
+            background: linear-gradient(135deg,#73a5f0 0%, #3d7bff 100%);
             height: 200px;
             border-bottom-left-radius: 20px;
             border-bottom-right-radius: 20px;
@@ -197,14 +197,14 @@
             /* Ukuran lebih besar */
             margin-right: 8px;
             /* Jarak dengan teks */
-            color: #6A0DAD;
+            color: #3d7bff;
             /* Warna ungu sesuai tema */
         }
 
         .icon-info {
             font-size: 22px;
             margin-right: 8px;
-            color: #6A0DAD;
+            color: #3d7bff;
         }
 
         .arrow {
@@ -227,7 +227,7 @@
         }
 
         .faq-dropdown a:hover {
-            color: #9C27B0;
+            color:rgb(124, 164, 251);
             background-color: #f5f5f5;
         }
 
@@ -255,7 +255,7 @@
         }
 
         footer.footer {
-            background-color: #3B0066;
+            background-color:rgb(0, 34, 107);
             color: white;
             padding: 30px 20px;
         }
@@ -293,7 +293,7 @@
             /* horizontal center */
             align-items: center;
             /* vertical center */
-            background-color: #9C27B0;
+            background-color:rgb(37, 77, 162);
             color: white;
             padding: 10px 20px;
             border-radius: 6px;
