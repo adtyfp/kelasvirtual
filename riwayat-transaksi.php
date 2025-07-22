@@ -57,7 +57,7 @@ function waktuLalu($tanggal)
         body { background-color: #f9edf8; color: #333; }
         .container { max-width: 450px; margin: 0 auto; min-height: 100vh; }
         .header {
-            background-color: #9C27B0; color: white;
+            background-color: #3d7bff; color: white;
             padding: 15px 20px; display: flex; align-items: center;
         }
         .back-button {
@@ -76,7 +76,7 @@ function waktuLalu($tanggal)
         .transaction-title {
             font-size: 16px;
             font-weight: 600;
-            color: #9C27B0;
+            color: #3d7bff;
             margin-bottom: 12px;
         }
         .transaction-tier { color: #555; }
@@ -95,7 +95,7 @@ function waktuLalu($tanggal)
         }
         .transaction-meta i {
             margin-right: 5px;
-            color: #9C27B0;
+            color: #3d7bff;
             font-size: 13px;
         }
         .transaction-date {
