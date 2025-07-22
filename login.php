@@ -95,7 +95,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $active_tab = 'register';
         }
     }
-}
 ?>
 
 
