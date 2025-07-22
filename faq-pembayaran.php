@@ -7,7 +7,7 @@
     <title>Pelajari FAQ - Kelas Virtual</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
+       <style>
         * {
             margin: 0;
             padding: 0;
@@ -22,7 +22,7 @@
 
         /* Header */
           .header {
-      background-color: #9c27b0;
+      background-color: #3d7bff;
       color: white;
       padding: 15px 20px;
       display: flex;
@@ -83,14 +83,14 @@
             /* Ukuran lebih besar */
             margin-right: 8px;
             /* Jarak dengan teks */
-            color: #6A0DAD;
+            color:rgb(22, 69, 169);
             /* Warna ungu sesuai tema */
         }
 
         .icon-info {
             font-size: 22px;
             margin-right: 8px;
-            color: #6A0DAD;
+            color:rgb(20, 70, 176);
         }
 
         .arrow {
@@ -113,7 +113,7 @@
         }
 
         .faq-dropdown a:hover {
-            color: #9C27B0;
+            color:rgb(33, 78, 177);
             background-color: #f5f5f5;
         }
 
@@ -157,7 +157,7 @@
 
         /* Special first card */
         .main-faq-card {
-            background-color: #E1BEE7;
+            background-color:rgb(202, 214, 241);
             margin-bottom: 25px;
         }
 
@@ -167,7 +167,7 @@
 
         /* Footer */
         .footer {
-            background-color: #3B0066;
+            background-color:rgb(3, 42, 128);
             color: white;
             padding: 40px 20px;
             margin-top: 50px;
@@ -205,7 +205,7 @@
 
         .free-trial {
             display: inline-block;
-            background-color: #9C27B0;
+            background-color:rgb(34, 74, 162);
             color: white;
             padding: 10px 15px;
             border-radius: 6px;
