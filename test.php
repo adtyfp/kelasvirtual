@@ -1,10 +1,19 @@
 <?php
 require_once 'koneksi.php';
 
-$sql = "INSERT INTO users (nama, email, password) VALUES ('Tes User', 'tes@email.com', '12345')";
-if (mysqli_query($conn, $sql)) {
+try {
+    // Gunakan prepared statement agar aman dari SQL Injection
+    $stmt = $pdo->prepare("INSERT INTO users (nama, email, password) VALUES (:nama, :email, :password)");
+
+    // Contoh data dummy
+    $stmt->execute([
+        'nama'     => 'Tes User',
+        'email'    => 'tes@email.com',
+        'password' => password_hash('12345', PASSWORD_BCRYPT)
+    ]);
+
     echo "✅ BERHASIL SIMPAN DATA!";
-} else {
-    echo "❌ GAGAL: " . mysqli_error($conn);
+} catch (PDOException $e) {
+    echo "❌ GAGAL SIMPAN: " . $e->getMessage();
 }
 ?>
