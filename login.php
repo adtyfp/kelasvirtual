@@ -38,58 +38,75 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // === REGISTER ===
-    if (isset($_POST['action']) && $_POST['action'] === 'register') {
-        $name = trim($_POST['name']);
-        $email = trim($_POST['email']);
-        $nim = trim($_POST['nim']);
-        $password = $_POST['password'];
-        $confirm_password = $_POST['confirm_password'];
-        $note = '';
+// === REGISTER ===
+if (isset($_POST['action']) && $_POST['action'] === 'register') {
+    $name = trim($_POST['name']);
+    $email = trim($_POST['email']);
+    $nim = trim($_POST['nim']);
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+    
+    // Reset error array
+    $errors = [];
 
-        // Validasi
-        if (empty($name)) $errors['name'] = "Nama wajib diisi";
-        if (empty($email)) {
-            $errors['email'] = "Email wajib diisi";
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $errors['email'] = "Format email tidak valid";
-        }
-        if (empty($nim)) $errors['nim'] = "NIM wajib diisi";
-        if (strlen($password) < 8) $errors['password'] = "Password minimal 8 karakter";
-        if ($password !== $confirm_password) $errors['confirm_password'] = "Konfirmasi password tidak cocok";
+    // Validasi
+    if (empty($name)) $errors['name'] = "Nama wajib diisi";
+    if (empty($email)) {
+        $errors['email'] = "Email wajib diisi";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors['email'] = "Format email tidak valid";
+    }
+    if (empty($nim)) $errors['nim'] = "NIM wajib diisi";
+    if (strlen($password) < 8) $errors['password'] = "Password minimal 8 karakter";
+    if ($password !== $confirm_password) $errors['confirm_password'] = "Konfirmasi password tidak cocok";
 
-        // Cek duplikat email/nim hanya jika tidak ada error validasi
-        if (empty($errors)) {
-            try {
-                $check = $pdo->prepare("SELECT COUNT(*) FROM users WHERE email = ? OR nim = ?");
-                $check->execute([$email, $nim]);
-                if ($check->fetchColumn() > 0) {
-                    $errors['email'] = "Email atau NIM sudah terdaftar";
-                }
-            } catch (PDOException $e) {
-                $errors['register'] = "Error saat pengecekan data: " . $e->getMessage();
-            }
-        }
-
-        // Proses registrasi jika tidak ada error
-        if (empty($errors)) {
-            try {
+    // Jika tidak ada error validasi
+    if (empty($errors)) {
+        try {
+            // Cek duplikat email/nim
+            $check = $pdo->prepare("SELECT COUNT(*) FROM users WHERE email = ? OR nim = ?");
+            $check->execute([$email, $nim]);
+            
+            if ($check->fetchColumn() > 0) {
+                $errors['email'] = "Email atau NIM sudah terdaftar";
+            } else {
+                // Hash password
                 $hash = password_hash($password, PASSWORD_DEFAULT);
-                $insert = $pdo->prepare("INSERT INTO users (name, email, nim, password, note) VALUES (?, ?, ?, ?, ?)");
-                $insert->execute([$name, $email, $nim, $hash, $note]);
-
-                if ($insert->rowCount() > 0) {
+                
+                // Insert data
+                $insert = $pdo->prepare("INSERT INTO users (name, email, nim, password, created_at) 
+                                       VALUES (?, ?, ?, ?, NOW())");
+                
+                $success = $insert->execute([$name, $email, $nim, $hash]);
+                
+                if ($success && $insert->rowCount() > 0) {
                     $success_message = "Registrasi berhasil! Silakan login.";
                     $active_tab = 'login';
+                    
+                    // Debug: Tampilkan data yang akan disimpan
+                    error_log("Data registrasi berhasil: " . print_r([
+                        'name' => $name,
+                        'email' => $email,
+                        'nim' => $nim
+                    ], true));
                 } else {
-                    $errors['register'] = "Gagal melakukan registrasi.";
+                    $errors['register'] = "Gagal menyimpan data. Silakan coba lagi.";
+                    
+                    // Debug error database
+                    $errorInfo = $insert->errorInfo();
+                    error_log("Database error: " . print_r($errorInfo, true));
                 }
-            } catch (PDOException $e) {
-                $errors['register'] = "Error saat registrasi: " . $e->getMessage();
             }
-        } else {
-            $active_tab = 'register';
+        } catch (PDOException $e) {
+            $errors['register'] = "Terjadi kesalahan sistem. Silakan coba lagi nanti.";
+            error_log("PDOException: " . $e->getMessage());
+            error_log("Trace: " . $e->getTraceAsString());
         }
+    }
+    
+    // Jika ada error, tetap di tab register
+    if (!empty($errors)) {
+        $active_tab = 'register';
     }
 }
 ?>
