@@ -346,25 +346,25 @@ if (isset($_POST['action']) && $_POST['action'] === 'register') {
         });
 
         // Add ripple effect styles
-        const rippleStyle = document.createElement('style');
-        rippleStyle.textContent = `
-    .ripple {
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        background: rgba(255, 255, 255, 0.4);
-        border-radius: 50%;
-        transform: scale(0);
-        animation: ripple 0.6s linear;
-        pointer-events: none;
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `
+.ripple {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(10);
+        opacity: 0;
     }
-    
-    @keyframes ripple {
-        to {
-            transform: scale(10);
-            opacity: 0;
-        }
-    }
+}
 `;
         document.head.appendChild(rippleStyle);
     </script>
