@@ -33,7 +33,7 @@ $user_id = $_SESSION['user_id']; // ✅ Tambahkan baris ini
     }
 
     .header {
-      background: #9c27b0;
+      background: #3d7bff;
       color: white;
       display: flex;
       align-items: center;
@@ -94,7 +94,7 @@ $user_id = $_SESSION['user_id']; // ✅ Tambahkan baris ini
       justify-content: center;
       font-size: 32px;
       color: white;
-      background: #9c27b0;
+      background: #3d7bff;
     }
 
     .card-content {
@@ -131,7 +131,7 @@ $user_id = $_SESSION['user_id']; // ✅ Tambahkan baris ini
       right: 20px;
       width: 50px;
       height: 50px;
-      background: #9c27b0;
+      background: #3d7bff;
       color: white;
       border: none;
       border-radius: 50%;
