@@ -3,12 +3,13 @@ require_once 'koneksi.php';
 
 try {
     // Gunakan prepared statement agar aman dari SQL Injection
-    $stmt = $pdo->prepare("INSERT INTO users (name, email, password) VALUES (:name, :email, :password)");
+    $stmt = $pdo->prepare("INSERT INTO users (name, email, nim, password) VALUES (:name, :email, :nim, :password)");
 
     // Contoh data dummy
     $stmt->execute([
         'name'     => 'Tes User',
         'email'    => 'tes@email.com',
+        'nim'    => '11223344',
         'password' => password_hash('12345', PASSWORD_BCRYPT)
     ]);
 
