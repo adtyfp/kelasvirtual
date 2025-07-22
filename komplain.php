@@ -6,7 +6,7 @@
   <title>Ajukan Komplain</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
+   <style>
     * {
       margin: 0;
       padding: 0;
@@ -27,7 +27,7 @@
     /* ===== HEADER ===== */
     .header {
       position: relative;
-      background: linear-gradient(135deg, #9C27B0, #6A0DAD);
+      background: linear-gradient(135deg,#73a5f0 0%, #3d7bff 100%);
       color: white;
       padding: 20px 16px 80px;
       border-bottom-left-radius: 24px;
