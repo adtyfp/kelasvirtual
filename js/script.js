@@ -3083,7 +3083,7 @@ function tampilkanAktivitasHome() {
     const tag = document.createElement("a");
     tag.classList.add("tag");
     tag.textContent = item.judul;
-    tag.style.backgroundColor = "rgba(255, 66, 211, 0.23)";
+    tag.style.backgroundColor = "#efc621 ";
 
     tag.addEventListener("click", (e) => {
       e.preventDefault();
