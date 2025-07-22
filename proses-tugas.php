@@ -26,20 +26,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $file_name = uniqid() . '_' . preg_replace('/[^a-zA-Z0-9\._-]/', '', $original_name);
         $target_file = $upload_dir . $file_name;
 
-        move_uploaded_file($_FILES['file']['tmp_name'], $target_file);
+        if (!move_uploaded_file($_FILES['file']['tmp_name'], $target_file)) {
+            die("Gagal mengupload file");
+        }
     }
 
-    // Simpan ke database
-    $stmt = $conn->prepare("INSERT INTO tugas (user_id, nama_tugas, mata_kuliah, deadline, file, is_uploaded) VALUES (?, ?, ?, ?, ?, 1)");
-    $stmt->bind_param("issss", $user_id, $nama_tugas, $mata_kuliah, $deadline, $file_name);
+    try {
+        // Simpan ke database menggunakan PDO
+        $stmt = $pdo->prepare("INSERT INTO tugas (user_id, nama_tugas, mata_kuliah, deadline, file, is_uploaded) 
+                              VALUES (:user_id, :nama_tugas, :mata_kuliah, :deadline, :file, 1)");
+        
+        $stmt->execute([
+            ':user_id' => $user_id,
+            ':nama_tugas' => $nama_tugas,
+            ':mata_kuliah' => $mata_kuliah,
+            ':deadline' => $deadline,
+            ':file' => $file_name
+        ]);
 
-    if ($stmt->execute()) {
         header("Location: kumpulkan.php?status=berhasil");
         exit();
-    } else {
-        echo "Gagal menyimpan tugas: " . $stmt->error;
+    } catch (PDOException $e) {
+        die("Gagal menyimpan tugas: " . $e->getMessage());
     }
-
-    $stmt->close();
 }
 ?>
