@@ -8,7 +8,7 @@ $id_folder = $_GET['id_folder'] ?? 0;
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Upload Materi</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <style>
+    <style>
     body {
       font-family: 'Poppins', sans-serif;
       background: #fbeeff;
@@ -18,7 +18,7 @@ $id_folder = $_GET['id_folder'] ?? 0;
     }
 
     h2 {
-      color: #9c27b0;
+      color: #3d7bff;
       text-align: center;
       margin-bottom: 20px;
     }
@@ -42,7 +42,7 @@ $id_folder = $_GET['id_folder'] ?? 0;
     }
 
     .submit-btn {
-      background: #9c27b0;
+      background: #3d7bff;
       color: white;
       padding: 12px;
       width: 100%;
@@ -54,7 +54,7 @@ $id_folder = $_GET['id_folder'] ?? 0;
     }
 
     .submit-btn:hover {
-      background: #7b1fa2;
+      background:rgb(31, 65, 140);
     }
   </style>
 </head>
