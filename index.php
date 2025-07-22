@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id']) && isset($_COOKIE['user_id'])) {
 // Cek apakah user sudah login (opsional, tergantung kebutuhan)
 if (!isset($_SESSION['user_id'])) {
   // Jika belum login, arahkan ke halaman login atau tampilkan pesan
-  header("Location: login.php");
+  header("Location: awal.php");
   exit();
 }
 
