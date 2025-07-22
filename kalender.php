@@ -20,7 +20,7 @@
         }
 
         .navbar {
-            background-color: #c03cd2;
+            background-color: #3d7bff;
             color: white;
             padding: 15px 20px;
             display: flex;
@@ -58,7 +58,7 @@
         .month-nav-btn {
             background: none;
             border: none;
-            color: #c03cd2;
+            color: #f39c12;
             font-size: 14px;
             font-weight: 500;
             cursor: pointer;
@@ -81,7 +81,7 @@
         }
 
         .current-month i {
-            color: #c03cd2;
+            color: #f39c12;
             margin-bottom: 5px;
         }
 
@@ -127,7 +127,7 @@
         }
 
         .calendar-day.today {
-            background-color: #c03cd2;
+            background-color: #f39c12;
             color: white;
         }
 
@@ -136,18 +136,18 @@
             position: absolute;
             width: 6px;
             height: 6px;
-            background-color: #c03cd2;
+            background-color: #f39c12;
             border-radius: 50%;
             bottom: 5px;
         }
 
         .calendar-day.selected {
-            background-color: #c03cd2;
+            background-color: #f39c12;
             color: white;
         }
 
         .calendar-day.has-event:not(.selected) {
-            border: 2px solid #c03cd2;
+            border: 2px solid #f39c12;
         }
 
         .events-container {
@@ -161,7 +161,7 @@
             font-size: 16px;
             font-weight: 500;
             margin-bottom: 15px;
-            color: #c03cd2;
+            color: #f39c12;
         }
 
         .event-item {
@@ -198,7 +198,7 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background-color: #c03cd2;
+            background-color: #f39c12;
             color: white;
             border: none;
             font-size: 24px;
@@ -246,7 +246,7 @@
 
         .modal-title {
             font-weight: 500;
-            color: #c03cd2;
+            color: #f39c12;
         }
 
         .close-btn {
@@ -284,7 +284,7 @@
         }
 
         .submit-btn {
-            background-color: #c03cd2;
+            background-color: #f39c12;
             color: white;
             border: none;
             padding: 10px 15px;
@@ -296,7 +296,7 @@
         }
 
         .submit-btn:hover {
-            background-color: #a832b8;
+            background-color:#a96a05;
         }
 
         .no-events {
@@ -306,7 +306,7 @@
         }
 
         .add-event-btn {
-            background-color: #c03cd2;
+            background-color: #f39c12;
             color: white;
             border: none;
             padding: 8px 15px;
@@ -318,7 +318,7 @@
         }
 
         .add-event-btn:hover {
-            background-color: #a832b8;
+            background-color:#a96a05;
         }
     </style>
 </head>
