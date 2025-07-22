@@ -16,7 +16,7 @@ body {
 
 .input-tugas-container h2 {
   margin-bottom: 20px;
-  color: #5e2ca5;
+  color: #3d7bff;
   text-align: center;
 }
 
@@ -37,7 +37,7 @@ body {
   font-size: 16px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  outline-color: #b57aff;
+  outline-color: #3d7bff;
   box-sizing: border-box;
 }
 
@@ -45,7 +45,7 @@ body {
   width: 100%;
   padding: 12px;
   font-size: 16px;
-  background: #7f49ff;
+  background: #3d7bff;
   color: white;
   border: none;
   border-radius: 8px;
@@ -54,14 +54,14 @@ body {
 }
 
 .submit-btn:hover {
-  background: #682ecc;
+  background: #244a9c;
 }
 
 .hasil-output {
   margin-top: 20px;
   background: #f1f0ff;
   padding: 15px;
-  border-left: 4px solid #7f49ff;
+  border-left: 4px solid #3d7bff;
   border-radius: 6px;
   color: #333;
   display: none;
