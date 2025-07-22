@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $active_tab = 'login';
         }
     }
-
+}
 // === REGISTER ===
 if (isset($_POST['action']) && $_POST['action'] === 'register') {
     $name = trim($_POST['name']);
