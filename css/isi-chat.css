@@ -17,7 +17,7 @@ body {
 
 /* 🟪 Header Chat */
 .chat-header {
-  background-color: #9c27b0;
+  background-color: #3d7bff;
   color: white;
   height: 56px;
   display: flex;
@@ -102,7 +102,7 @@ body {
 }
 
 .outgoing .bubble {
-  background-color: #9c27b0;
+  background-color: #3d7bff;
   color: white;
 }
 
@@ -155,7 +155,7 @@ body {
 }
 
 .mic-button {
-  background-color: #9c27b0;
+  background-color: #3d7bff;
   color: white;
   border: none;
   border-radius: 50%;
@@ -170,7 +170,7 @@ body {
 }
 
 .mic-button:hover {
-  background-color: #8e24aa;
+  background-color: #3d7bff;
 }
 
 /* Responsiveness */
