@@ -59,13 +59,13 @@ body {
 
 .tab.active {
   background: white;
-  color: #bd25d0;
+  color: #3d7bff;
   box-shadow: 0 4px 15px rgba(0,0,0,0.15);
   transform: translateY(-1px);
 }
 
 .tab:not(.active):hover {
-  color: #bd25d0;
+  color: #294e9e;
   transform: translateY(-1px);
 }
 
@@ -132,6 +132,8 @@ body {
   transform: translateX(5%) scale(0.98);
 }
 
+
+
 /* Form Header */
 .form-header {
   margin-bottom: 25px;
@@ -178,7 +180,7 @@ body {
 }
 
 .input-group input:focus {
-  border-color: #bd25d0;
+  border-color: #3d7bff;
   outline: none;
   box-shadow: 0 0 0 3px rgba(189, 37, 208, 0.1);
   background: white;
@@ -195,7 +197,7 @@ body {
 
 .remember-me input {
   margin-right: 10px;
-  accent-color: #bd25d0;
+  accent-color: #3d7bff;
   transform: scale(1.1);
 }
 
@@ -209,7 +211,7 @@ body {
 .btn {
   width: 100%;
   padding: 15px;
-  background: #bd25d0;
+  background: #3d7bff;
   color: white;
   border: none;
   border-radius: 10px;
@@ -225,7 +227,7 @@ body {
 
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(189, 37, 208, 0.4);
+  box-shadow: 0 6px 15px #21489c;
 }
 
 .btn:active {
@@ -331,7 +333,7 @@ body {
 }
 
 .tab.active {
-    background: #bd25d0;
+    background: #3d7bff;
     color: white;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
