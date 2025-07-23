@@ -261,7 +261,7 @@ while ($row = $kuisResult->fetch_assoc()) {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 55px; /* Dikurangi dari 70px */
+  height: 63px; /* Dikurangi dari 70px */
   background:  linear-gradient( #73a5f0 0%, #124fd3 100%);
   display: flex;
   justify-content: space-around;
