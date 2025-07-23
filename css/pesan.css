@@ -173,25 +173,26 @@ body {
 /* ===== BOTTOM NAVIGATION ===== */
 .bottom-nav {
   position: fixed;
-  bottom: 0;
+  bottom: 15px; /* Tambahkan jarak dari bawah */
   left: 0;
-  width: 100%;
-  height: 63px; /* Dikurangi dari 70px */
-  background: #2196F3; /* Biru */
+  right: 0;
+  width: calc(100% - 30px); /* Jarak kanan-kiri 15px */
+  margin: 0 auto; /* Center horizontal */
+  height: 63px;
+  background: white;
   display: flex;
   justify-content: space-around;
   align-items: center;
   z-index: 1000;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-  padding: 0 15px; /* Tambah padding samping */
+  border-radius: 15px; /* Tambahkan radius agar tidak tajam di ujung */
+  box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.1);
+  padding: 0 15px;
 }
 
 .bottom-nav .nav-item {
   flex: 0 1 auto; /* Ubah dari flex: 1 agar tidak mengambil ruang penuh */
   text-align: center;
-  color: white;
+  color: rgb(81, 81, 81);
   font-size: 11px; /* Dikurangi dari 12px */
   text-decoration: none;
   position: relative;
@@ -224,13 +225,13 @@ body {
 /* Logo tengah */
 .nav-logo-wrapper {
   position: absolute;
-  top: -25px; /* Disesuaikan dari -30px */
+  top: -20px; /* Disesuaikan dari -30px */
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(#73a5f0 0%, #124fd3 100%);
-  width: 55px; /* Dikurangi dari 65px */
-  height: 55px; /* Dikurangi dari 65px */
-  border-radius: 50%;
+  background: transparent;
+  width: 85px; /* Dikurangi dari 65px */
+  height: 50px; /* Dikurangi dari 65px */
+  border-radius: 18%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -240,10 +241,10 @@ body {
 
 .nav-logo-wrapper .nav-logo {
   display: block;
-  width: 50px; /* Dikurangi dari 60px */
-  height: 50px; /* Dikurangi dari 60px */
+  width: 80px; /* Dikurangi dari 60px */
+  height: 45px; /* Dikurangi dari 60px */
   background: white;
-  border-radius: 50%;
+  border-radius: 18%;
   padding: 8px; /* Dikurangi dari 10px */
   overflow: hidden;
 }
