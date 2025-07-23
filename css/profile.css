@@ -133,7 +133,7 @@ body {
   background-color: rgba(0,0,0,0.7);
   z-index: 1050; /* ✅ PASTIKAN lebih tinggi dari navbar */
   display: none;
-  align-items: left;
+  align-items: center;
   justify-content: center;
   overflow: auto;
   padding: 20px 0;
@@ -173,6 +173,7 @@ body {
 
 .form-group {
   margin-bottom: 20px;
+    text-align: left;
 }
 
 label {
