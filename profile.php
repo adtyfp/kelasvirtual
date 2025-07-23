@@ -109,42 +109,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <!-- Section Note -->
     <div class="note-section">
-      <h2>Note</h2>
+      <h2>Catatan</h2>
       <p><?= $user['note'] ? nl2br(htmlspecialchars($user['note'])) : 'Tidak ada catatan' ?>
       </p>
     </div>
 
 <!-- Personal Detail -->
 <div class="personal-details-section">
-  <h2>Personal Details</h2>
+  <h2>Detail Pribadi</h2>
 
   <div class="detail-item">
-    <div class="detail-label">First Name</div>
+    <div class="detail-label">Nama Depan</div>
     <div class="detail-value"><?= htmlspecialchars($user['first_name'] ?? '') ?></div>
   </div>
 
   <div class="detail-item">
-    <div class="detail-label">Last Name</div>
+    <div class="detail-label">Nama Belakang</div>
     <div class="detail-value"><?= htmlspecialchars($user['last_name'] ?? '') ?></div>
   </div>
 
   <div class="detail-item">
-    <div class="detail-label">Address 1</div>
+    <div class="detail-label">Alamat 1</div>
     <div class="detail-value"><?= htmlspecialchars($user['address1'] ?? '') ?></div>
   </div>
 
   <div class="detail-item">
-    <div class="detail-label">Address 2</div>
+    <div class="detail-label">Alamat 2</div>
     <div class="detail-value"><?= htmlspecialchars($user['address2'] ?? '') ?></div>
   </div>
 
   <div class="detail-item">
-    <div class="detail-label">City</div>
+    <div class="detail-label">Kota</div>
     <div class="detail-value"><?= htmlspecialchars($user['city'] ?? '') ?></div>
   </div>
 
   <div class="detail-item">
-    <div class="detail-label">State</div>
+    <div class="detail-label">Provinsi</div>
     <div class="detail-value"><?= htmlspecialchars($user['state'] ?? '') ?></div>
   </div>
 
@@ -154,17 +154,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </div>
 
   <div class="detail-item">
-    <div class="detail-label">Country</div>
+    <div class="detail-label">Negara</div>
     <div class="detail-value"><?= htmlspecialchars($user['country'] ?? '') ?></div>
   </div>
 
   <div class="detail-item">
-    <div class="detail-label">Phone Number</div>
+    <div class="detail-label">Nomor Telp</div>
     <div class="detail-value"><?= htmlspecialchars($user['phone_number'] ?? '') ?></div>
   </div>
 
   <div class="detail-item">
-    <div class="detail-label">Telegram Username</div>
+    <div class="detail-label"> Username Telegram</div>
     <div class="detail-value"><?= htmlspecialchars($user['telegram_username'] ?? '') ?></div>
   </div>
 </div>
