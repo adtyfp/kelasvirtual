@@ -159,7 +159,7 @@ function waktuLalu($tanggal)
   <div class="profile-dosen-section">
     <h3>Profile Dosen</h3>
     <div class="dosen-cards">
-      <a href="profile-dosen.html?id=1" class="dosen-card">
+      <a href="profile-dosen.php?id=1" class="dosen-card">
         <img src="https://via.placeholder.com/300x100?text=Dosen+1" alt="">
       </a>
       <a href="dosen-detail.html?id=2" class="dosen-card">
