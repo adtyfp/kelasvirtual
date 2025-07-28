@@ -98,6 +98,66 @@
       color: #444;
     }
 
+    .achievement-card {
+  display: flex;
+  align-items: flex-start;
+  background: #fff;
+  padding: 12px;
+  margin: 12px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.achievement-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 16px;
+  border-radius: 4px;
+}
+
+.achievement-content {
+  flex: 1;
+}
+
+.achievement-content h4 {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0 0 4px;
+}
+
+.achievement-content p {
+  font-size: 13px;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.badge {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  color: white;
+  font-weight: 600;
+}
+
+.badge.blue {
+  background-color: #3498db;
+}
+
+.badge.gray {
+  background-color: #7f8c8d;
+}
+
+.badge.green {
+  background-color: #1abc9c;
+}
+
+
     @media (max-width: 600px) {
       .header-title {
         font-size: 18px;
@@ -120,7 +180,7 @@
 
     <!-- Kartu Profil -->
     <div class="card">
-      <img src="asset/Desain tanpa judul.png" alt="Foto Dosen">
+      <img src="asset/image.png" alt="Foto Dosen">
       <h3>Andrias Darmayadi, S.IP, M.Si, Ph.D</h3>
       <p><strong>NIDN:</strong> 0406087702</p>
       <p><strong>Pendidikan:</strong> </p>
@@ -138,11 +198,63 @@
       </p>
     </div>
 
-    <!-- Prestasi -->
-    <div class="section">
-      <h3>Prestasi</h3>
-      <p>Belum ada data prestasi yang ditampilkan.</p>
+<!-- Prestasi -->
+<div class="section">
+  <h3>Prestasi</h3>
+
+  <div class="achievement-card">
+    <img src="asset/sukmalindo.jpg" alt="Sukmalindo 2019">
+    <div class="achievement-content">
+      <h4>Sukmalindo 2019</h4>
+      <p>Juara 1 & Juara 2 - Kategori Beregu Campuran & Ganda Putra</p>
+      <div class="badges">
+        <span class="badge blue">Internasional</span>
+        <span class="badge gray">Uncategorized</span>
+        <span class="badge green">2019</span>
+      </div>
     </div>
+  </div>
+
+  <div class="achievement-card">
+    <img src="asset/asean.jpg" alt="ASEAN University Games 2018">
+    <div class="achievement-content">
+      <h4>ASEAN University Games 2018</h4>
+      <p>Juara 3 - Kategori Beregu Putra</p>
+      <div class="badges">
+        <span class="badge blue">Internasional</span>
+        <span class="badge gray">Uncategorized</span>
+        <span class="badge green">2018</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="achievement-card">
+    <img src="asset/pencak1.jpg" alt="Pencak Silat PPS 2018">
+    <div class="achievement-content">
+      <h4>Pencak Silat Terbuka PPS Pakubumi Cup IV 2018</h4>
+      <p>Juara III Tanding Kelas H Putra - Kategori Tanding Kelas H Putra - Perorangan</p>
+      <div class="badges">
+        <span class="badge blue">Internasional</span>
+        <span class="badge gray">Uncategorized</span>
+        <span class="badge green">2018</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="achievement-card">
+    <img src="asset/pencak2.jpg" alt="Pencak Silat PPS 2018">
+    <div class="achievement-content">
+      <h4>Pencak Silat Terbuka PPS Pakubumi Cup IV 2018</h4>
+      <p>Juara I Seni Tunggal Dewasa Putri - Kategori Tunggal Dewasa Putri - Perorangan</p>
+      <div class="badges">
+        <span class="badge blue">Internasional</span>
+        <span class="badge gray">Uncategorized</span>
+        <span class="badge green">2018</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   </div>
 
