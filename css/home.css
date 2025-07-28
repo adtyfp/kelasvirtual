@@ -93,25 +93,30 @@ body.no-scroll {
 
 .task-title {
   font-weight: 700;
-  margin-bottom: 6px;
   font-size: 18px;
 }
 
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
 .progress-bar {
-  height: 4px;
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 2px;
-  margin: 8px 0 15px;
-  overflow: hidden;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  height: 12px;
   width: 70%;
-  /* Buat lebih pendek dari lebar container */
+  overflow: hidden;
+  margin-bottom: 10px;
 }
 
 .progress {
+  background: linear-gradient(90deg, #4CAF50, #81C784);
   height: 100%;
-  width: 60%;
-  background-color: #2ecc71;
-  border-radius: 2px;
+  border-radius: 8px;
+  transition: width 0.3s ease;
 }
 
 .schedule {
