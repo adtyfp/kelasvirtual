@@ -14,7 +14,13 @@ $progress = $total > 0 ? min(round(($selesai/$max_tugas)*100), 100) : 0;
 ?>
 
 <div class="task-progress">
-  <!-- ... bagian progress tetap sama ... -->
+  <div class="progress-header">
+    <span class="progress-label">Progress Tugas (<?= $selesai ?>/<?= $max_tugas ?>)</span>
+    <span class="progress-value"><?= $progress ?>%</span>
+  </div>
+  <div class="progress-bar">
+    <div class="progress" style="width: <?= $progress ?>%"></div>
+  </div>
 </div>
 
 <?php
