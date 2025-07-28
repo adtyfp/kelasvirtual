@@ -1,39 +1,23 @@
 <?php
-$host = 'shortline.proxy.rlwy.net'; // Perhatikan typo di 'proxy' sebelumnya
-$db = 'railway';
+$host = 'localhost';
 $user = 'root';
-$pass = 'BzqBvkxgNYrBiaaQClzRvJvsRPXfKvyz';
-$charset = 'utf8mb4';
-$port = 16491;
+$pass = '';
+$db = 'apkkelasvirtual';
 
-// Opsi tambahan untuk koneksi
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-    PDO::ATTR_TIMEOUT            => 10, // Timeout dalam detik
-];
+// Koneksi MySQLi
+$koneksi = new mysqli($host, $user, $pass, $db);
 
-try {
-    // Format DSN dengan port yang ditentukan
-    $dsn = "mysql:host=$host;port=$port;dbname=$db;charset=$charset";
-    
-    $pdo = new PDO($dsn, $user, $pass, $options);
-    
-    // Test koneksi sederhana
-    $pdo->query("SELECT 1");
-    
-    // Jika sampai sini, koneksi berhasil
-    // echo "Koneksi berhasil!"; // Bisa di-comment setelah testing
-} catch (PDOException $e) {
-    // Tampilkan pesan error yang lebih informatif
-    $error_message = "Koneksi gagal: " . $e->getMessage() . "\n";
-    $error_message .= "Pastikan:\n";
-    $error_message .= "- Host, port, dan credential benar\n";
-    $error_message .= "- Database service sedang berjalan\n";
-    $error_message .= "- Koneksi internet stabil\n";
-    $error_message .= "- Firewall mengizinkan koneksi ke port $port";
-    
-    die($error_message);
+if ($koneksi->connect_error) {
+    die("Koneksi MySQLi gagal: " . $koneksi->connect_error);
 }
+
+// Koneksi PDO (opsional)
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Koneksi PDO gagal: " . $e->getMessage());
+}
+
+date_default_timezone_set('Asia/Jakarta');
 ?>
