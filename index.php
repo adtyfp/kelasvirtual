@@ -55,6 +55,12 @@ function waktuLalu($tanggal)
     return "$hari hari yang lalu";
 }
 
+$user_id = $_SESSION['user_id'] ?? 0;
+$max_tugas = 5;
+
+$total = $koneksi->query("SELECT COUNT(*) FROM tugashome WHERE user_id = $user_id")->fetch_row()[0];
+$selesai = $koneksi->query("SELECT COUNT(*) FROM tugashome WHERE user_id = $user_id AND status = 'selesai'")->fetch_row()[0];
+$progress = $total > 0 ? min(round(($selesai/$max_tugas)*100), 100) : 0;
 ?>
 
 
@@ -93,10 +99,14 @@ function waktuLalu($tanggal)
   </div>
 
   <div class="task-card">
-    <div class="task-title">Tugas Selesai</div>
-    <div class="progress-bar">
-      <div class="progress"></div>
-    </div>
+<div class="progress-container">
+  <div class="progress-header">
+    <span class="task-title">Tugas Selesai <?= $progress ?>%</span>
+  </div>
+  <div class="progress-bar">
+    <div class="progress" style="width: <?= $progress ?>%"></div>
+  </div>
+</div>
     <div class="schedule">
       <div>Jadwal kelas Terdekat</div>
       <div class="schedule-date">15 Jun 2025</div>
