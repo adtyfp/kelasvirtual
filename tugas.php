@@ -189,49 +189,49 @@ while ($row = $kuisResult->fetch_assoc()) {
         }
 
         .status-container {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 4px;
-            z-index: 2;
-        }
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    z-index: 2;
+}
 
-        .status-badge {
-            font-size: 12px;
-            font-weight: 500;
-            padding: 3px 8px;
-            border-radius: 12px;
-            white-space: nowrap;
-        }
+.status-badge {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 12px;
+    display: inline-block;
+}
 
-        /* Late tag styling */
-        .late-tag {
-            background-color: #FFEBEE;
-            color: #C62828;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 12px;
-            display: inline-flex;
-            align-items: center;
-        }
+.status-badge.belum {
+    background-color: #ffeeee;
+    color: #f44336;
+}
 
-        .late-tag i {
-            margin-right: 5px;
-            font-size: 10px;
-        }
+.status-badge.selesai {
+    background-color: #eeffee;
+    color: #4caf50;
+}
 
-        .status-badge.belum {
-            background-color: #ffeeee;
-            color: #f44336;
-        }
+.late-tag {
+    background-color: #FFEBEE;
+    color: #C62828;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+}
 
-        .status-badge.selesai {
-            background-color: #eeffee;
-            color: #4caf50;
-        }
+.late-tag i {
+    margin-right: 5px;
+    font-size: 10px;
+}
 
         .submit-btn {
             display: inline-block;
