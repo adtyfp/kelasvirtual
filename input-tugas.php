@@ -4,16 +4,24 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
+
+// Pastikan parameter yang diterima sesuai
+$task_id = (int)($_GET['task_id'] ?? 0);  // Ubah dari 'id' ke 'task_id'
+$nama_tugas = htmlspecialchars($_GET['nama'] ?? '');
+$mata_kuliah = htmlspecialchars($_GET['matkul'] ?? '');
+$deadline = htmlspecialchars($_GET['deadline'] ?? '');
+
+if ($task_id === 0) {
+    $_SESSION['error'] = "ID Tugas tidak valid";
+    header("Location: tugas.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Input Tugas</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <style>
+    <style>
     body {
       font-family: 'Poppins', sans-serif;
       background: #fbeeff;
@@ -66,40 +74,66 @@ if (!isset($_SESSION['user_id'])) {
   </style>
 </head>
 <body>
-
   <div class="input-tugas-container">
-    <h2>Input Tugas</h2>
+    <h2>Kumpulkan Tugas</h2>
 
-    <form action="proses-tugas.php" method="POST" enctype="multipart/form-data">
+    <?php if (isset($_SESSION['error'])): ?>
+      <div class="alert error"><?= $_SESSION['error'] ?></div>
+      <?php unset($_SESSION['error']); ?>
+    <?php endif; ?>
+
+    <form action="proses-tugas.php" method="POST" enctype="multipart/form-data" id="formTugas">
+      <input type="hidden" name="task_id" value="<?= $task_id ?>">
+      
       <div class="form-group">
-        <label for="namaTugas">Nama Tugas</label>
-        <input type="text" id="namaTugas" name="nama_tugas" required />
+        <label>Nama Tugas</label>
+        <input type="text" value="<?= $nama_tugas ?>" readonly>
+        <input type="hidden" name="nama_tugas" value="<?= $nama_tugas ?>">
       </div>
 
       <div class="form-group">
-        <label for="mataKuliah">Mata Kuliah</label>
-        <select id="mataKuliah" name="mata_kuliah" required>
-          <option value="">-- Pilih Mata Kuliah --</option>
-          <option>Ekonomi Politik</option>
-          <option>Sosiologi</option>
-          <option>Manajemen Proyek</option>
-          <option>Bahasa Indonesia</option>
-        </select>
+        <label>Mata Kuliah</label>
+        <input type="text" value="<?= $mata_kuliah ?>" readonly>
+        <input type="hidden" name="mata_kuliah" value="<?= $mata_kuliah ?>">
       </div>
 
       <div class="form-group">
-        <label for="deadline">Deadline</label>
-        <input type="date" id="deadline" name="deadline" required />
+        <label>Deadline</label>
+        <input type="text" value="<?= $deadline ?>" readonly>
+        <input type="hidden" name="deadline" value="<?= $deadline ?>">
       </div>
 
       <div class="form-group">
-        <label for="uploadFile">Upload File</label>
-        <input type="file" id="uploadFile" name="file" />
+        <label for="file">File Tugas (PDF/DOC/JPEG/PNG)</label>
+        <input type="file" id="file" name="file" required accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
       </div>
 
-      <button type="submit" class="submit-btn">Kirim Tugas</button>
+      <button type="submit" class="submit-btn">Kumpulkan Tugas</button>
     </form>
   </div>
 
+  <script>
+  // Validasi sebelum submit
+  document.getElementById('formTugas').addEventListener('submit', function(e) {
+      const fileInput = document.getElementById('file');
+      if (fileInput.files.length === 0) {
+          alert('Silakan pilih file terlebih dahulu!');
+          e.preventDefault();
+          return false;
+      }
+      
+      const allowedTypes = ['application/pdf', 'application/msword', 
+          'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+          'image/jpeg', 'image/png'];
+      
+      if (!allowedTypes.includes(fileInput.files[0].type)) {
+          alert('Hanya file PDF, DOC, JPEG, atau PNG yang diizinkan!');
+          e.preventDefault();
+          return false;
+      }
+      
+      return true;
+  });
+  </script>
 </body>
 </html>
