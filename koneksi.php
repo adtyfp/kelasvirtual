@@ -1,8 +1,8 @@
 <?php
-$host = 'localhost';
+$host = 'mysql.railway.internal';
 $user = 'root';
-$pass = '';
-$db = 'apkkelasvirtual';
+$pass = 'BzqBvkxgNYrBiaaQClzRvJvsRPXfKvyz';
+$db = 'railway';
 
 // Koneksi MySQLi
 $koneksi = new mysqli($host, $user, $pass, $db);
