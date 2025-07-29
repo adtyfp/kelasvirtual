@@ -604,79 +604,97 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   // Generate kelas harian lengkap untuk 7 hari
-  const kelasHarian = {};
+const kelasHarian = {};
 
-  function generateAllClasses() {
-    const startDate = new Date("2025-07-19");
-    const days = 7; // Jumlah hari yang akan digenerate
+// Generate all classes for the next 7 days
+function generateAllClasses() {
+  const startDate = new Date(today);
+  const days = 7; // Number of days to generate
 
-    for (let i = 0; i < days; i++) {
-      const currentDate = new Date(startDate);
-      currentDate.setDate(startDate.getDate() + i);
-      const dateStr = currentDate.toISOString().split("T")[0];
-      const formattedDate = formatDate(currentDate);
+  for (let i = 0; i < days; i++) {
+    const currentDate = new Date(startDate);
+    currentDate.setDate(startDate.getDate() + i);
+    const dateStr = currentDate.toISOString().split("T")[0];
+    const formattedDate = formatDate(currentDate);
 
-      kelasHarian[dateStr] = {};
+    kelasHarian[dateStr] = {};
 
-      for (const [prodi, matkuls] of Object.entries(prodiMatkul)) {
-        kelasHarian[dateStr][prodi] = {};
+    for (const [prodi, matkuls] of Object.entries(prodiMatkul)) {
+      kelasHarian[dateStr][prodi] = {};
 
-        // Ambil 2-3 matkul random per hari
-        const shuffled = [...matkuls].sort(() => 0.5 - Math.random());
-        const selectedMatkuls = shuffled.slice(
-          0,
-          Math.floor(Math.random() * 2) + 2
-        );
-
-        selectedMatkuls.forEach((matkul, index) => {
-          const waktuMulai = 8 + index * 3; // Jam mulai: 8, 11, 14
-          const waktuSelesai = waktuMulai + 2;
-
-          kelasHarian[dateStr][prodi][matkul] = {
-            badge: generateBadge(i, index),
-            title: generateClassTitle(matkul),
-            date: formattedDate,
-            time: `${waktuMulai.toString().padStart(2, "0")}.00 - ${waktuSelesai
-              .toString()
-              .padStart(2, "0")}.00`,
-            dosen: generateDosen(prodi, matkul),
-            ruang: generateRoom(prodi),
-            metode: Math.random() > 0.5 ? "Online" : "Offline",
-            link: generateClassLink(prodi, matkul),
-          };
-        });
-      }
-    }
-  }
-
-  // Helper functions
-  function formatDate(date) {
-    const options = { day: "numeric", month: "short", year: "numeric" };
-    return date.toLocaleDateString("id-ID", options);
-  }
-
-  function formatDisplayDate(dateStr) {
-    const date = new Date(dateStr);
-    const options = {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    };
-    return date.toLocaleDateString("id-ID", options);
-  }
-
-  function generateBadge(dayOffset, classIndex) {
-    if (dayOffset === 0) {
-      return (
-        ["Baru saja", "1 Jam Lagi", "2 Jam Lagi"][classIndex] || "Hari Ini"
+      // Shuffle courses to randomize selection
+      const shuffledMatkuls = [...matkuls].sort(() => 0.5 - Math.random());
+      
+      // Select random courses (35-44 or all if less than 35)
+      const jumlahMatkul = Math.min(
+        Math.floor(Math.random() * 10) + 35,
+        shuffledMatkuls.length
       );
-    } else if (dayOffset === 1) {
-      return "Besok";
-    } else {
-      return `${dayOffset} Hari Lagi`;
+      const selectedMatkuls = shuffledMatkuls.slice(0, jumlahMatkul);
+
+      // Generate classes for each selected course
+      selectedMatkuls.forEach((matkul, index) => {
+        // Calculate class time (each class is 1.5 hours starting from 8:00)
+        const waktuMulai = 8 + (index * 1.5);
+        const jamMulai = Math.floor(waktuMulai);
+        const menitMulai = waktuMulai % 1 === 0 ? "00" : "30";
+
+        const waktuSelesai = waktuMulai + 1.5;
+        const jamSelesai = Math.floor(waktuSelesai);
+        const menitSelesai = waktuSelesai % 1 === 0 ? "00" : "30";
+
+        const timeRange = `${jamMulai.toString().padStart(2, "0")}.${menitMulai} - ${jamSelesai
+          .toString()
+          .padStart(2, "0")}.${menitSelesai}`;
+
+        // Get random topic for this course
+        const classTitle = generateClassTitle(matkul);
+
+        // Add to kelasHarian object
+        kelasHarian[dateStr][prodi][matkul] = {
+          badge: generateBadge(i, index),
+          title: classTitle,
+          date: formattedDate,
+          time: timeRange,
+          dosen: generateDosen(prodi, matkul),
+          ruang: generateRoom(prodi),
+          metode: Math.random() > 0.5 ? "Online" : "Offline",
+          link: generateClassLink(prodi, matkul),
+        };
+      });
     }
   }
+}
+
+// Initialize when DOM is ready
+  generateAllClasses();
+
+// Helper functions
+function formatDate(date) {
+  const options = { day: "numeric", month: "short", year: "numeric" };
+  return date.toLocaleDateString("id-ID", options);
+}
+
+function formatDisplayDate(dateStr) {
+  const date = new Date(dateStr);
+  const options = {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  };
+  return date.toLocaleDateString("id-ID", options);
+}
+
+function generateBadge(dayOffset, classIndex) {
+  if (dayOffset === 0) {
+    return ["Baru saja", "1 Jam Lagi", "2 Jam Lagi"][classIndex] || "Hari Ini";
+  } else if (dayOffset === 1) {
+    return "Besok";
+  } else {
+    return `${dayOffset} Hari Lagi`;
+  }
+}
 
   function generateClassTitle(matkul) {
     const topics = {
@@ -2769,58 +2787,50 @@ document.addEventListener("DOMContentLoaded", function () {
       ],
     };
 
-    const defaultTopics = [
-      "Pengantar",
-      "Konsep Dasar",
-      "Prinsip Utama",
-      "Studi Kasus",
-      "Implementasi",
-    ];
-    const availableTopics = topics[matkul] || defaultTopics;
-    const randomTopic =
-      availableTopics[Math.floor(Math.random() * availableTopics.length)];
+      const availableTopics = topics[matkul] || [
+    "Pengantar",
+    "Konsep Dasar",
+    "Prinsip Utama",
+    "Studi Kasus",
+    "Implementasi",
+  ];
+  const randomTopic = availableTopics[Math.floor(Math.random() * availableTopics.length)];
+  return `${matkul}: ${randomTopic}`;
+}
 
-    return `${matkul}: ${randomTopic}`;
-  }
+function generateDosen(prodi, matkul) {
+  const availableDosen = dosenByProdi[prodi] || ["Dr. John Doe, M.Sc", "Prof. Jane Smith, Ph.D"];
+  return availableDosen[Math.floor(Math.random() * availableDosen.length)];
+}
 
-  function generateDosen(prodi, matkul) {
-    const defaultDosen = ["Dr. John Doe, M.Sc", "Prof. Jane Smith, Ph.D"];
-    const availableDosen = dosenByProdi[prodi] || defaultDosen;
-    return availableDosen[Math.floor(Math.random() * availableDosen.length)];
-  }
+function generateRoom(prodi) {
+  const building = prodi.includes("Teknik")
+    ? "Gedung Teknik"
+    : prodi.includes("Magister") || prodi.includes("Doktor")
+    ? "Gedung Pascasarjana"
+    : "Gedung Utama";
+  const roomNumber = Math.floor(Math.random() * 50) + 1;
+  return `${building} R.${roomNumber}`;
+}
 
-  function generateRoom(prodi) {
-    const building = prodi.includes("Teknik")
-      ? "Gedung Teknik"
-      : prodi.includes("Magister") || prodi.includes("Doktor")
-      ? "Gedung Pascasarjana"
-      : "Gedung Utama";
-    const roomNumber = Math.floor(Math.random() * 50) + 1;
-    return `${building} R.${roomNumber}`;
-  }
+function generateClassLink(prodi, matkul) {
+  const baseName = matkul
+    .toLowerCase()
+    .replace(/ /g, "-")
+    .replace(/[^a-z0-9-]/g, "");
+  return `/${prodi.toLowerCase().replace(/ /g, "-")}/${baseName}.php`;
+}
 
-  function generateClassLink(prodi, matkul) {
-    const baseName = matkul
-      .toLowerCase()
-      .replace(/ /g, "-")
-      .replace(/[^a-z0-9-]/g, "");
-    return `/${prodi.toLowerCase().replace(/ /g, "-")}/${baseName}.php`;
-  }
+function getBadgeClass(badgeText) {
+  if (badgeText.includes("Baru")) return "badge-new";
+  if (badgeText.includes("Jam")) return "badge-soon";
+  return "badge-upcoming";
+}
 
-  function getBadgeClass(badgeText) {
-    if (badgeText.includes("Baru")) return "badge-new";
-    if (badgeText.includes("Jam")) return "badge-soon";
-    return "badge-upcoming";
-  }
-
-  // Generate semua kelas
-  generateAllClasses();
-
-  // Fungsi untuk menampilkan kelas ke UI
-  function displayClasses() {
-    const container = document.getElementById("classes-container");
+function displayClasses() {
+  const container = document.getElementById("classes-container");
+  if (container) {
     container.innerHTML = "";
-
     const sortedDates = Object.keys(kelasHarian).sort();
 
     sortedDates.forEach((date) => {
@@ -2846,20 +2856,16 @@ document.addEventListener("DOMContentLoaded", function () {
           const classCard = document.createElement("div");
           classCard.className = "class-card";
           classCard.innerHTML = `
-          <span class="class-badge ${getBadgeClass(details.badge)}">${
-            details.badge
-          }</span>
-          <h4>${details.title}</h4>
-          <div class="class-info">
-            <div><i class="far fa-calendar"></i> ${details.date}</div>
-            <div><i class="far fa-clock"></i> ${details.time}</div>
-            <div><i class="fas fa-user-tie"></i> ${details.dosen}</div>
-            <div><i class="fas fa-map-marker-alt"></i> ${details.ruang} • ${
-            details.metode
-          }</div>
-          </div>
-          <a href="${details.link}" class="class-btn">Mulai Kelas</a>
-        `;
+            <span class="class-badge ${getBadgeClass(details.badge)}">${details.badge}</span>
+            <h4>${details.title}</h4>
+            <div class="class-info">
+              <div><i class="far fa-calendar"></i> ${details.date}</div>
+              <div><i class="far fa-clock"></i> ${details.time}</div>
+              <div><i class="fas fa-user-tie"></i> ${details.dosen}</div>
+              <div><i class="fas fa-map-marker-alt"></i> ${details.ruang} • ${details.metode}</div>
+            </div>
+            <a href="${details.link}" class="class-btn">Mulai Kelas</a>
+          `;
           classesGrid.appendChild(classCard);
         }
 
@@ -2870,21 +2876,16 @@ document.addEventListener("DOMContentLoaded", function () {
       container.appendChild(dateSection);
     });
   }
+}
 
-  // Inisialisasi saat DOM siap
-  document.addEventListener("DOMContentLoaded", function () {
-    displayClasses();
-  });
-
-  //batas
-  const prodiSelect = document.getElementById("dropdown-prodi");
-  const matkulSelect = document.getElementById("dropdown-matkul");
-
-  function buatDayTabs() {
-    const container = document.getElementById("dayTabs");
+ // Create day tabs for navigation
+function buatDayTabs() {
+  const container = document.getElementById("dayTabs");
+  if (container) {
     container.innerHTML = "";
+    
     for (let i = 0; i < 7; i++) {
-      const date = new Date();
+      const date = new Date(today);
       date.setDate(today.getDate() + i);
 
       const namaHari = hariList[date.getDay()];
@@ -2898,10 +2899,8 @@ document.addEventListener("DOMContentLoaded", function () {
       btn.innerText = `${namaHari} ${tanggal} ${bulan}`;
       if (i === 0) btn.classList.add("active");
 
-      btn.addEventListener("click", function () {
-        document
-          .querySelectorAll(".day-tab")
-          .forEach((t) => t.classList.remove("active"));
+      btn.addEventListener("click", function() {
+        document.querySelectorAll(".day-tab").forEach(t => t.classList.remove("active"));
         this.classList.add("active");
         tampilkanKelas(fullDate);
       });
@@ -2909,90 +2908,101 @@ document.addEventListener("DOMContentLoaded", function () {
       container.appendChild(btn);
     }
   }
+}
 
-  function tampilkanKelas(tanggal) {
-    const prodi = prodiSelect.value;
-    const matkul = matkulSelect.value;
+  // Show class details for selected day
+function tampilkanKelas(tanggal) {
+  const prodi = document.getElementById("dropdown-prodi")?.value;
+  const matkul = document.getElementById("dropdown-matkul")?.value;
 
+  if (prodi && matkul) {
     const kelas = kelasHarian[tanggal]?.[prodi]?.[matkul];
-
-    document.getElementById("class-badge").innerText = kelas?.badge || "-";
-    document.getElementById("class-title").innerText = kelas?.title || "-";
-    document.getElementById("class-date").innerText = kelas?.date || "-";
-    document.getElementById("class-time").innerText = kelas?.time || "-";
-    document.getElementById("class-dosen").innerText = kelas?.dosen || "-";
+    
+    if (document.getElementById("class-badge")) document.getElementById("class-badge").innerText = kelas?.badge || "-";
+    if (document.getElementById("class-title")) document.getElementById("class-title").innerText = kelas?.title || "-";
+    if (document.getElementById("class-date")) document.getElementById("class-date").innerText = kelas?.date || "-";
+    if (document.getElementById("class-time")) document.getElementById("class-time").innerText = kelas?.time || "-";
+    if (document.getElementById("class-dosen")) document.getElementById("class-dosen").innerText = kelas?.dosen || "-";
   }
+}
 
-  function updateMatkul() {
-    const selectedProdi = prodiSelect.value;
+// Update course dropdown when study program changes
+function updateMatkul() {
+  const selectedProdi = document.getElementById("dropdown-prodi")?.value;
+  const matkulSelect = document.getElementById("dropdown-matkul");
+  
+  if (selectedProdi && matkulSelect) {
     matkulSelect.innerHTML = "";
     const listMatkul = prodiMatkul[selectedProdi] || [];
+    
     listMatkul.forEach((matkul) => {
       const option = document.createElement("option");
       option.value = matkul;
       option.textContent = matkul;
       matkulSelect.appendChild(option);
     });
+    
     const activeTab = document.querySelector(".day-tab.active");
     if (activeTab) tampilkanKelas(activeTab.getAttribute("data-date"));
   }
+}
 
-  prodiSelect.addEventListener("change", updateMatkul);
-  matkulSelect.addEventListener("change", function () {
-    const activeTab = document.querySelector(".day-tab.active");
-    if (activeTab) tampilkanKelas(activeTab.getAttribute("data-date"));
-  });
-
-  // Fungsi mulai kelas
   // 3. Fungsi mulaiKelas yang sudah diperbaiki
   function mulaiKelas() {
-    try {
-      console.log("Memulai kelas..."); // Debugging
-      
-      // Validasi
+  try {
+    const activeTab = document.querySelector(".day-tab.active");
+    if (!activeTab) throw new Error("Pilih hari terlebih dahulu");
+    
+    const prodi = document.getElementById("dropdown-prodi").value;
+    const matkul = document.getElementById("dropdown-matkul").value;
+    if (!prodi || !matkul) throw new Error("Pilih prodi dan mata kuliah");
+    
+    const tanggal = activeTab.getAttribute("data-date");
+    const kelas = kelasHarian[tanggal]?.[prodi]?.[matkul];
+    
+    if (!kelas) throw new Error("Tidak ada jadwal kelas untuk pilihan ini");
+    
+    // Save class data to session storage
+    const classData = {
+      prodi,
+      matkul,
+      tanggal,
+      classInfo: kelas
+    };
+    sessionStorage.setItem('currentClass', JSON.stringify(classData));
+    
+    // Redirect to class page
+    window.location.href = kelas.link;
+  } catch (error) {
+    console.error("Error saat memulai kelas:", error);
+    alert(`Gagal memulai kelas: ${error.message}`);
+  }
+}
+
+  // Set up event listeners
+  const prodiSelect = document.getElementById("dropdown-prodi");
+  if (prodiSelect) {
+    prodiSelect.addEventListener("change", updateMatkul);
+  }
+
+  const matkulSelect = document.getElementById("dropdown-matkul");
+  if (matkulSelect) {
+    matkulSelect.addEventListener("change", function() {
       const activeTab = document.querySelector(".day-tab.active");
-      if (!activeTab) throw new Error("Pilih hari terlebih dahulu");
-      
-      const prodi = prodiSelect.value;
-      const matkul = matkulSelect.value;
-      if (!prodi || !matkul) throw new Error("Pilih prodi dan mata kuliah");
-      
-      const tanggal = activeTab.getAttribute("data-date");
-      console.log("Mencari kelas untuk:", {prodi, matkul, tanggal}); // Debugging
-      
-      // Cek ketersediaan kelas
-      const kelas = kelasHarian[tanggal]?.[prodi]?.[matkul];
-      if (!kelas) throw new Error("Tidak ada jadwal kelas untuk pilihan ini");
-      
-      // Cek ketersediaan topik
-      if (!topics[matkul] || topics[matkul].length === 0) {
-        throw new Error("Belum ada materi untuk mata kuliah ini");
-      }
-      
-      // Simpan data ke sessionStorage
-      const classData = {
-        prodi,
-        matkul,
-        tanggal,
-        topics: topics[matkul],
-        classInfo: kelas
-      };
-      sessionStorage.setItem('currentClass', JSON.stringify(classData));
-      
-      console.log("Data kelas disimpan:", classData); // Debugging
-      
-      // Redirect ke halaman kelas
-      window.location.href = 'komunikasi-politik.php';
-    } catch (error) {
-      console.error("Error saat memulai kelas:", error);
-      alert(`Gagal memulai kelas: ${error.message}`);
-    }
+      if (activeTab) tampilkanKelas(activeTab.getAttribute("data-date"));
+    });
+  }
+
+  const startBtn = document.getElementById("mulai-kelas-btn");
+  if (startBtn) {
+    startBtn.addEventListener("click", mulaiKelas);
   }
 
   // 4. Pastikan event listener terpasang
   document.getElementById('mulai-kelas-btn').addEventListener('click', mulaiKelas);
   buatDayTabs();
   updateMatkul();
+    displayClasses();
 });
 
 
