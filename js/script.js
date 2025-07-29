@@ -615,8 +615,17 @@ function generateAllClasses() {
     const currentDate = new Date(startDate);
     currentDate.setDate(startDate.getDate() + i);
     const dateStr = currentDate.toISOString().split("T")[0];
-    const formattedDate = formatDate(currentDate);
+    
+    // Skip Sunday (Minggu)
+    if (currentDate.getDay() === 0) {
+      kelasHarian[dateStr] = { 
+        isSunday: true,
+        message: "Tidak ada kelas di hari minggu" 
+      };
+      continue;
+    }
 
+    const formattedDate = formatDate(currentDate);
     kelasHarian[dateStr] = {};
 
     for (const [prodi, matkuls] of Object.entries(prodiMatkul)) {
@@ -2834,12 +2843,23 @@ function displayClasses() {
     const sortedDates = Object.keys(kelasHarian).sort();
 
     sortedDates.forEach((date) => {
+      const currentDate = new Date(date);
       const dateSection = document.createElement("div");
       dateSection.className = "date-section";
 
       const dateHeader = document.createElement("h2");
       dateHeader.textContent = formatDisplayDate(date);
       dateSection.appendChild(dateHeader);
+
+      // Check if it's Sunday
+      if (currentDate.getDay() === 0) {
+        const noClassMsg = document.createElement("p");
+        noClassMsg.className = "no-class-message";
+        noClassMsg.textContent = "Tidak ada kelas hari ini (Hari Minggu)";
+        dateSection.appendChild(noClassMsg);
+        container.appendChild(dateSection);
+        return;
+      }
 
       for (const [prodi, matkuls] of Object.entries(kelasHarian[date])) {
         const prodiSection = document.createElement("div");
@@ -2919,7 +2939,7 @@ function tampilkanKelas(tanggal) {
     const kelas = kelasHarian[tanggal]?.[prodi]?.[matkul];
     
     if (document.getElementById("class-badge")) document.getElementById("class-badge").innerText = kelas?.badge || "-";
-    if (document.getElementById("class-title")) document.getElementById("class-title").innerText = kelas?.title || "-";
+    if (document.getElementById("class-title")) document.getElementById("class-title").innerText = kelas?.title || "Tidak Ada Kelas di Hari Minggu";
     if (document.getElementById("class-date")) document.getElementById("class-date").innerText = kelas?.date || "-";
     if (document.getElementById("class-time")) document.getElementById("class-time").innerText = kelas?.time || "-";
     if (document.getElementById("class-dosen")) document.getElementById("class-dosen").innerText = kelas?.dosen || "-";
