@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id']) && isset($_COOKIE['user_id'])) {
 // Cek apakah user sudah login (opsional, tergantung kebutuhan)
 if (!isset($_SESSION['user_id'])) {
   // Jika belum login, arahkan ke halaman login atau tampilkan pesan
-  header("Location: awal.php");
+  header("Location: login.php");
   exit();
 }
 
@@ -54,6 +54,9 @@ function waktuLalu($tanggal)
   else
     return "$hari hari yang lalu";
 }
+
+$query = "SELECT id, nama, foto FROM profil_dosen";
+$result = $koneksi->query($query);
 
 $user_id = $_SESSION['user_id'] ?? 0;
 $max_tugas = 5;
@@ -99,6 +102,7 @@ $progress = $total > 0 ? min(round(($selesai/$max_tugas)*100), 100) : 0;
   </div>
 
   <div class="task-card">
+    
 <div class="progress-container">
   <div class="progress-header">
     <span class="task-title">Tugas Selesai <?= $progress ?>%</span>
@@ -107,10 +111,11 @@ $progress = $total > 0 ? min(round(($selesai/$max_tugas)*100), 100) : 0;
     <div class="progress" style="width: <?= $progress ?>%"></div>
   </div>
 </div>
-    <div class="schedule">
-      <div>Jadwal kelas Terdekat</div>
-      <div class="schedule-date">15 Jun 2025</div>
-    </div>
+<div class="schedule">
+  <div id="jadwal-label">Jadwal Kelas Terdekat</div>
+  <div class="schedule-date" id="jadwal-tanggal">16 Agustus 2025</div>
+</div>
+
     <a href="kalender.php" class="view-all">Lihat Semua Jadwal</a>
     <img src="asset/mikroskop.png" alt="Microscope" class="microscope-img" />
   </div>
@@ -142,7 +147,7 @@ $progress = $total > 0 ? min(round(($selesai/$max_tugas)*100), 100) : 0;
     <div class="section-header">
       <div class="section-title">Aktivitas</div>
       <a href="aktivitas.php" class="see-all-link">Lihat Semua</a>
-    </div>
+    </div>  
     <div class="tags" id="activity-tags">
       <!-- Tag ditampilkan maksimal 3 -->
     </div>
@@ -165,22 +170,22 @@ $progress = $total > 0 ? min(round(($selesai/$max_tugas)*100), 100) : 0;
     </div>
   </div>
 
-  <!-- Profile Dosen Section -->
-  <div class="profile-dosen-section">
-    <h3>Profile Dosen</h3>
-    <div class="dosen-cards">
-      <a href="profile-dosen.php?id=1" class="dosen-card">
-        <img src="https://via.placeholder.com/300x100?text=Dosen+1" alt="">
+<!-- Profile Dosen Section -->
+<div class="profile-dosen-section">
+  <h3>Profile Dosen</h3>
+  <div class="dosen-cards">
+    <?php while($row = $result->fetch_assoc()): ?>
+      <?php
+        $foto = !empty($row['foto']) ? htmlspecialchars($row['foto']) : 'default.jpg';
+        $nama = !empty($row['nama']) ? htmlspecialchars($row['nama']) : '-';
+      ?>
+      <a href="profile_dosen.php?id=<?= $row['id'] ?>" class="dosen-card">
+        <img src="assets/<?= $foto ?>" alt="<?= $nama ?>">
+        <p style="text-align: center; margin-top: 6px; font-size: 14px;"><?= $nama ?></p>
       </a>
-      <a href="dosen-detail.html?id=2" class="dosen-card">
-        <img src="https://via.placeholder.com/300x100?text=Dosen+2" alt="">
-      </a>
-      <a href="dosen-detail.html?id=3" class="dosen-card">
-        <img src="https://via.placeholder.com/300x100?text=Dosen+3" alt="">
-      </a>
-    </div>
+    <?php endwhile; ?>
   </div>
-
+</div>
 
   <!-- bottom nav -->
   <nav class="bottom-nav">
@@ -248,24 +253,24 @@ $progress = $total > 0 ? min(round(($selesai/$max_tugas)*100), 100) : 0;
 <div class="dropdown-container">
   <label for="dropdown-prodi" class="dropdown-label">Pilih Program Studi</label>
   <select id="dropdown-prodi" class="dropdown">
-    <option value="Prodi Teknik Informatika">Teknik Informatika</option>
-    <option value="Prodi Sistem Informasi">Sistem Informasi</option>
-    <option value="Prodi Sistem Komputer">Sistem Komputer</option>
-    <option value="Prodi Teknik Industri">Teknik Industri</option>
-    <option value="Prodi Teknik Elektro">Teknik Elektro</option>
-    <option value="Prodi Teknik Arsitektur">Teknik Arsitektur</option>
-    <option value="Prodi Teknik Sipil">Teknik Sipil</option>
+    <option value="Prodi Teknik Informatika">Prodi Teknik Informatika</option>
+    <option value="Prodi Sistem Informasi">Prodi Sistem Informasi</option>
+    <option value="Prodi Sistem Komputer">Prodi Sistem Komputer</option>
+    <option value="Prodi Teknik Industri">Prodi Teknik Industri</option>
+    <option value="Prodi Teknik Elektro">Prodi Teknik Elektro</option>
+    <option value="Prodi Teknik Arsitektur">Prodi Teknik Arsitektur</option>
+    <option value="Prodi Teknik Sipil">Prodi Teknik Sipil</option>
     <option value="Perencanaan Wilayah dan Kota">Perencanaan Wilayah dan Kota</option>
-    <option value="Prodi Teknik Robotika dan Kecerdasan Buatan">Teknik Robotika dan Kecerdasan Buatan</option>
-    <option value="Prodi Manajemen Informatika"> Manajemen Informatika</option>
+    <option value="Prodi Teknik Robotika dan Kecerdasan Buatan">Prodi Teknik Robotika dan Kecerdasan Buatan</option>
+    <option value="Prodi Manajemen Informatika">Prodi Manajemen Informatika</option>
     <option value="Komputerisasi Akuntansi">Komputerisasi Akuntansi</option>
     <option value="Keuangan dan Perbankan">Keuangan dan Perbankan</option>
     <option value="Manajemen Pemasaran">Manajemen Pemasaran</option>
     <option value="Desain Grafis">Desain Grafis</option>
-    <option value="Prodi Akuntansi"> Akuntansi</option>
-    <option value="Prodi Manajemen"> Manajemen</option>
-    <option value="Prodi Hukum"> Hukum</option>
-    <option value="Prodi Ilmu Pemerintahan"> Ilmu Pemerintahan</option>
+    <option value="Prodi Akuntansi">Prodi Akuntansi</option>
+    <option value="Prodi Manajemen">Prodi Manajemen</option>
+    <option value="Prodi Hukum">Prodi Hukum</option>
+    <option value="Prodi Ilmu Pemerintahan">Prodi Ilmu Pemerintahan</option>
     <option value="Ilmu Komunikasi">Ilmu Komunikasi</option>
     <option value="Hubungan Internasional">Hubungan Internasional</option>
     <option value="Desain Komunikasi Visual">Desain Komunikasi Visual</option>
